@@ -27,7 +27,7 @@ class Database(object):
         return result
 
 
-test = Database()
-clothetest = ('01.png','white','shorts','summer','01')
-test.store_clothe(clothetest)
-test.get_clothe('color','white')
+# test = Database()
+# clothetest = ('01.png','white','shorts','summer','01')
+# test.store_clothe(clothetest)
+# test.get_clothe('color','white')
