@@ -56,7 +56,7 @@ def generate():
     while not found:
         rand_top = random.choice(_db.get_clothe_by_type("top")) #returns id
         matched_top = rand_top
-         top_hex = _db.db[rand_top]["hex"]
+        top_hex = _db.db[rand_top]["hex"]
         colors_to_match = None
         palettes_temp = copy.deepcopy(db.colors)
         while len(palettes_temp) > 0:
