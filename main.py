@@ -3,6 +3,6 @@ app = FlaskAPI(__name__)
 
 
 
-@app.route('/test')
+@app.route('/test', methods=['GET'])
 def test():
 	return {'hello': 'world'}
