@@ -49,16 +49,15 @@ _db.colors = palletes
 
 @app.route('/generate', methods=['GET'])
 
-def generate(db):
+def generate():
     found = False
     matched_top = None
     matched_bottom = None
     matched_colors = None
     while not found:
-        rand_top = random.choice(db.get_clothe_by_type("top")) #returns id
+        rand_top = random.choice(_db.get_clothe_by_type("top")) #returns id
         matched_top = rand_top
-        # top_color = db.db[rand_top]["color"]
-        top_hex = db.db[rand_top]["hex"]
+        top_hex = _db.db[rand_top]["hex"]
         colors_to_match = None
         palettes_temp = copy.deepcopy(db.colors)
         while len(palettes_temp) > 0:
@@ -68,21 +67,16 @@ def generate(db):
             if top_hex in rand_palette:
                 matched_colors = copy.deepcopy(rand_palette)
             if matched_colors != None:
-                for bottom in db.get_clothe_by_type("bottom"):
-                    bottom_hex =db.get_hex(bottom)
+                for bottom in _db.get_clothe_by_type("bottom"):
+                    bottom_hex = _db.get_hex(bottom)
                     if (bottom_hex in matched_colors) and (bottom_hex != top_hex):
                         found = True
                         matched_bottom = bottom
 
    
-    return {"top": db.get_pic(matched_top), 
-        "bottom": db.get_pic(matched_bottom), 
+    return {"top": _db.get_pic(matched_top), 
+        "bottom": _db.get_pic(matched_bottom), 
         "colors": matched_colors}
-
-
-
-
-
 
 
 
