@@ -34,7 +34,18 @@ class Database(object):
     def get_hex(self, clothe_id):
     	return self.db[clothe_id]["hex"]
 
+app = FlaskAPI(__name__)
+_db = Database()
+clothetest = ("01.png","white","0x44","top","summer","01")
+clothetest1 = ("01.png","black","0x22","bottom","summer","02")
+_db.store_clothe(clothetest)
+_db.store_clothe(clothetest1)
 
+
+palletes = [['0x43', '0x243'], ['0x23','0x11'], ['0x44','0x22'] ]
+_db.colors = palletes
+
+@app.route('/generate', methods=['GET'])
 
 def generate(db):
     found = False
@@ -74,22 +85,14 @@ def generate(db):
 
 
 
-test = Database()
-clothetest = ("01.png","white","0x44","top","summer","01")
-clothetest1 = ("01.png","black","0x22","bottom","summer","02")
-palletes = [['0x43', '0x243'], ['0x23','0x11'], ['0x44','0x22'] ]
-test.colors = palletes
-test.store_clothe(clothetest)
-test.store_clothe(clothetest1)
-print test.db
-print test.lookup_table
-print generate(test)
-# app = FlaskAPI(__name__)
+# test = Database()
+# clothetest = ("01.png","white","0x44","top","summer","01")
+# clothetest1 = ("01.png","black","0x22","bottom","summer","02")
+# palletes = [['0x43', '0x243'], ['0x23','0x11'], ['0x44','0x22'] ]
+# test.colors = palletes
+# test.store_clothe(clothetest)
+# test.store_clothe(clothetest1)
+# print test.db
+# print test.lookup_table
+# print generate(test)
 
-
-
-
-
-# @app.route('/', methods=['GET'])
-# def test():
-#     return {'hello': 'world'}
