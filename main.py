@@ -63,7 +63,6 @@ def generate(db):
             #assume we always find color
             rand_palette = random.choice(palettes_temp)
             palettes_temp.remove(rand_palette)
-            print rand_palette
             if top_hex in rand_palette:
                 matched_colors = copy.deepcopy(rand_palette)
             if matched_colors != None:
@@ -85,14 +84,4 @@ def generate(db):
 
 
 
-# test = Database()
-# clothetest = ("01.png","white","0x44","top","summer","01")
-# clothetest1 = ("01.png","black","0x22","bottom","summer","02")
-# palletes = [['0x43', '0x243'], ['0x23','0x11'], ['0x44','0x22'] ]
-# test.colors = palletes
-# test.store_clothe(clothetest)
-# test.store_clothe(clothetest1)
-# print test.db
-# print test.lookup_table
-# print generate(test)
 
