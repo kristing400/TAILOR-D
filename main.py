@@ -33,11 +33,13 @@ class Database(object):
 
     def get_hex(self, clothe_id):
     	return self.db[clothe_id]["hex"]
-
+    
+    def get_pic(self, clothe_id):
+    	return self.db[clothe_id]["pic"]
 app = FlaskAPI(__name__)
 _db = Database()
 clothetest = ("01.png","white","0x44","top","summer","01")
-clothetest1 = ("01.png","black","0x22","bottom","summer","02")
+clothetest1 = ("02.png","black","0x22","bottom","summer","02")
 _db.store_clothe(clothetest)
 _db.store_clothe(clothetest1)
 
@@ -73,7 +75,9 @@ def generate(db):
                         matched_bottom = bottom
 
    
-    return matched_top, matched_bottom, matched_colors
+    return {"top": db.get_pic(matched_top), 
+        "bottom": db.get_pic(matched_bottom), 
+        "colors": matched_colors}
 
 
 
