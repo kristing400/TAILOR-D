@@ -4,5 +4,5 @@ app = FlaskAPI(__name__)
 
 
 @app.route('/test')
-def example():
+def test():
 	return {'hello': 'world'}
