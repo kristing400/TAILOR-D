@@ -58,7 +58,7 @@ def generate():
         matched_top = rand_top
         top_hex = _db.db[rand_top]["hex"]
         colors_to_match = None
-        palettes_temp = copy.deepcopy(db.colors)
+        palettes_temp = copy.deepcopy(_db.colors)
         while len(palettes_temp) > 0:
             #assume we always find color
             rand_palette = random.choice(palettes_temp)
@@ -73,11 +73,11 @@ def generate():
                         matched_bottom = bottom
 
    
-    return {"top": _db.get_pic(matched_top), 
+    return {
+    	"top": _db.get_pic(matched_top), 
         "bottom": _db.get_pic(matched_bottom), 
-        "colors": matched_colors}
-
-
+        "colors": matched_colors
+        }
 
 
 
